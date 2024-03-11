@@ -1,6 +1,6 @@
 from os import system, name
 import time
-from clm_library import clm_students
+from clm_library import clm_students  # this takes a nested dictionary called clm_students that has all students in congregation. format: clm_students = {"lastname": {'firstname': 'title', 'firstname': 'title'} title either Brother or Sister
 
 part_number_list = ['3', '4', '5', '6', '7', '8']
 part_type_dict = {
