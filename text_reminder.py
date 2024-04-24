@@ -178,7 +178,7 @@ Your Brother,
 #{hh_part_info[0]}  |  {hh_part_info[1]} - {hh_part_info[5]}""")
     if len(hh_part_info) == 9:
         print(f"""
-{pronoun_hh[0]}'s {part_i[2]} {part_i[3]}'s householder.""")
+{pronoun_hh[0]} is {part_i[2]} {part_i[3]}'s householder.""")
     else:
         print(f"""
 You are {part_i[2]} {part_i[3]}'s householder.""")
