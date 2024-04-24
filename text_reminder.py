@@ -369,8 +369,10 @@ def student_part_type():
     print('Enter [M] for Making Disciples\n')
     print('Enter [T] for Talk\n')
     print('Enter [K] for Kindness-\n')
-    print('Enter [HU] for Humility-\n')
+    print('Enter [H] for Humility-\n')
     choice = input('> ').lower()
+    if choice == 'h':
+        choice = 'hu'
     if choice == 'k' or choice == 'hu':
         student_part_theme(choice)
     else:
