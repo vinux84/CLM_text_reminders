@@ -125,8 +125,6 @@ def demonstration(part_info, hh_part_info):
     clear_screen()
     pronoun = find_pronoun(part_info[4])
     pronoun_hh = find_pronoun(hh_part_info[4])
-    print(part_info)
-    print(hh_part_info)
     print("\nCOPY BELOW INTO A MESSAGE")
     print("-------------------------\n")
     if len(part_info) == 9:
