@@ -28,11 +28,8 @@ part_theme_dict = {
     'di': 'Discussion',
 }
 
-
 part_info = []
-part_i = []
 hh_part_info = []
-c = 0
 
 
 def clear_screen():
@@ -47,19 +44,16 @@ def get_part_number(part_number):
         if n == part_number:
             return n
 
-    
 def get_part_type(part_type):
     for t_key, t_value in part_type_dict.items():
         if t_key == part_type:
             return t_value
-
 
 def get_part_theme(part_theme):
     for t_key, t_value in part_theme_dict.items():
         if t_key == part_theme:
             return t_value
         
-
 def get_student(last_name, first_name):
     m = '_minor'
     check_minor = first_name + m
@@ -81,6 +75,10 @@ def get_student(last_name, first_name):
                             gt = clm_students[last][fn]['title']
                             return fnm, l, tm, gfn, gln, gt
 
+def exception_handler(t):
+    print(f'\nPart {t} not found, Choose from the available part {t}s...')
+    time.sleep(5)
+    
 def find_pronoun(title):
     if title == 'Brother':
         he = 'he'
@@ -91,29 +89,25 @@ def find_pronoun(title):
         her = 'her'
         return she, her
 
-def exception_handler(t):
-    print(f'\nPart {t} not found, Choose from the available part {t}s...')
-    time.sleep(5)
-
-def bible_reading_or_talk(part_i):
+def bible_reading_or_talk(part_info):
     clear_screen()
-    pronoun = find_pronoun(part_i[4])
+    pronoun = find_pronoun(part_info[4])
     print("\nCOPY BELOW INTO A MESSAGE")
     print("-------------------------\n")
-    if len(part_i) >= 7:
-        print(f"Hello {part_i[7]} {part_i[6]}, just a reminder that for this coming Tuesday night’s meeting {part_i[2]} is scheduled for the part:")
+    if len(part_info) >= 7:
+        print(f"Hello {part_info[7]} {part_info[6]}, just a reminder that for this coming Tuesday night’s meeting {part_info[2]} is scheduled for the part:")
     else:
-        print(f"Hello {part_i[4]} {part_i[3]}, just a reminder that for this coming Tuesday night’s meeting you are scheduled for the part:")
-    if part_i[1] == 'Bible Reading':
+        print(f"Hello {part_info[4]} {part_info[3]}, just a reminder that for this coming Tuesday night’s meeting you are scheduled for the part:")
+    if part_info[1] == 'Bible Reading':
         print(f"""
-#{part_i[0]}  |  {part_i[1]}""")
-    elif len(part_i) >= 7:
+#{part_info[0]}  |  {part_info[1]}""")
+    elif len(part_info) >= 7:
         print(f"""
-#{part_i[0]}  |  {part_i[1]} - {part_i[8]}""")
+#{part_info[0]}  |  {part_info[1]} - {part_info[8]}""")
     else:
         print(f"""
-#{part_i[0]}  |  {part_i[1]} - {part_i[5]}""")
-    if len(part_i) >= 7:
+#{part_info[0]}  |  {part_info[1]} - {part_info[5]}""")
+    if len(part_info) >= 7:
         print(f"""
 Please text back to confirm that {pronoun[0]} can or cannot do the assignment.""")
     else:
@@ -128,31 +122,31 @@ Your Brother,
     print("\n---------------------------\n\n\n")
     input("Are you done? Press any key to continue...")
 
-
-
-def demonstration(part_i, hh_part_info):
+def demonstration(part_info, hh_part_info):
     clear_screen()
-    pronoun = find_pronoun(part_i[4])
+    pronoun = find_pronoun(part_info[4])
     pronoun_hh = find_pronoun(hh_part_info[4])
+    print(part_info)
+    print(hh_part_info)
     print("\nCOPY BELOW INTO A MESSAGE")
     print("-------------------------\n")
-    if len(part_i) == 9:
-        print(f"Hello {part_i[7]} {part_i[6]}, just a reminder that for this coming Tuesday night’s meeting {part_i[2]} is scheduled for the part:")
+    if len(part_info) == 9:
+        print(f"Hello {part_info[7]} {part_info[6]}, just a reminder that for this coming Tuesday night’s meeting {part_info[2]} is scheduled for the part:")
     else:
-        print(f"Hello {part_i[4]} {part_i[3]}, just a reminder that for this coming Tuesday night’s meeting you are scheduled for the part:")
-    if len(part_i) == 9:
+        print(f"Hello {part_info[4]} {part_info[3]}, just a reminder that for this coming Tuesday night’s meeting you are scheduled for the part:")
+    if len(part_info) == 9:
         print(f"""
-#{part_i[0]}  |  {part_i[1]} - {part_i[8]}""")
+#{part_info[0]}  |  {part_info[1]} - {part_info[8]}""")
     else:
         print(f"""
-#{part_i[0]}  |  {part_i[1]} - {part_i[5]}""")
-    if len(part_i) == 9:
+#{part_info[0]}  |  {part_info[1]} - {part_info[5]}""")
+    if len(part_info) == 9:
         print(f"""
 with {hh_part_info[2]} {hh_part_info[3]} as {pronoun[1]} householder.""")
     else:
         print(f"""
 with {hh_part_info[2]} {hh_part_info[3]} as your householder.""")
-    if len(part_i) == 9:
+    if len(part_info) == 9:
         print(f"""
 Please text back to confirm that {pronoun[0]} can or cannot do the assignment.""")
     else:
@@ -178,10 +172,10 @@ Your Brother,
 #{hh_part_info[0]}  |  {hh_part_info[1]} - {hh_part_info[5]}""")
     if len(hh_part_info) == 9:
         print(f"""
-{pronoun_hh[0]} is {part_i[2]} {part_i[3]}'s householder.""")
+{pronoun_hh[0]} is {part_info[2]} {part_info[3]}'s householder.""")
     else:
         print(f"""
-You are {part_i[2]} {part_i[3]}'s householder.""")
+You are {part_info[2]} {part_info[3]}'s householder.""")
     if len(hh_part_info) == 9:
         print(f"""
 Please text back to confirm that {pronoun_hh[0]} can or cannot do the assignment.""")
@@ -195,7 +189,6 @@ Your Brother,
 -Vincent Benningfield- """)
     print("\n---------------------------\n\n")
     input("Are you done? Press any key to continue...")
-
 
 def name_example(choice):
     clear_screen()
@@ -221,7 +214,6 @@ def name_example(choice):
         time.sleep(5)
         name_example(choice)
     
-    
 def house_holder():
     clear_screen()
     print("\nEnter the Householder's Name")
@@ -238,8 +230,6 @@ def house_holder():
         hh_part_info.extend(part_info)
         hh_part_info.extend(person_list)
         
-        
-
 def student_name(*args, **kwargs):
     clear_screen()
     print("\nEnter the Student's Name")
@@ -256,56 +246,55 @@ def student_name(*args, **kwargs):
     else:
         for t in args:
             if t == 'r':
-                part_i = part_info + person_list
-                bible_reading_or_talk(part_i)
+                part_info.extend(person_list)
+                bible_reading_or_talk(part_info)
             elif t == 't':
                 for kw in kwargs.values():
-                    part_i = part_info + person_list
-                    part_i.append(kw)
-                    bible_reading_or_talk(part_i)
+                    part_info.extend(person_list)
+                    part_info.append(kw)
+                    bible_reading_or_talk(part_info)
             elif t == 'e':
                 for theme in args:
                     if theme == 'e_talk':
                         for kw in kwargs.values():
-                            part_i = part_info + person_list
+                            part_info.extend(person_list)
                             g_theme = get_part_theme('t')
                             total_theme = g_theme + " " + kw 
-                            part_i.append(total_theme)
-                            bible_reading_or_talk(part_i)
+                            part_info.append(total_theme)
+                            bible_reading_or_talk(part_info)
                     elif theme == 'e_demonstration':
                         for kw in kwargs.values():
                             house_holder()
-                            part_i = part_info + person_list
+                            part_info.extend(person_list)
                             g_theme = get_part_theme('d')
                             total_theme = g_theme + " " + kw
-                            part_i.append(total_theme)
+                            part_info.append(total_theme)
                             hh_part_info.append(total_theme)
-                            demonstration(part_i, hh_part_info)
+                            demonstration(part_info, hh_part_info)
             elif t == 'k' or t == 'hu':
-                part_i = part_info + person_list
+                part_info.extend(person_list)
                 g_theme = get_part_theme('di')
-                part_i.append(g_theme)
-                bible_reading_or_talk(part_i)
+                part_info.append(g_theme)
+                bible_reading_or_talk(part_info)
             else:
                 if t == 'h' or t == 'p' or t == 'i':
                     house_holder()
-                    part_i = part_info + person_list
+                    part_info.extend(person_list)
                     for theme in args:
                         if theme == 'h':
                             g_theme = get_part_theme('h')
-                            part_i.append(g_theme)
+                            part_info.append(g_theme)
                             hh_part_info.append(g_theme)
                         elif theme == 'p':
                             g_theme = get_part_theme('p')
-                            part_i.append(g_theme)
+                            part_info.append(g_theme)
                             hh_part_info.append(g_theme)
                         elif theme == 'i':
                             g_theme = get_part_theme('i')
-                            part_i.append(g_theme)
+                            part_info.append(g_theme)
                             hh_part_info.append(g_theme)
-                        demonstration(part_i, hh_part_info)
+                        demonstration(part_info, hh_part_info)
             
-
 def student_part_theme(choice):
     clear_screen()
     pth = 'theme'
@@ -313,7 +302,7 @@ def student_part_theme(choice):
         student_name(choice)
     elif choice == 't':
         print('\nEnter the Theme of the Talk')
-        print('------------------------------\n')
+        print('---------------------------\n')
         talk_t = input('> ')
         student_name(choice, talk_theme=f'Theme: {talk_t}')
     elif choice == 'e':
@@ -329,7 +318,7 @@ def student_part_theme(choice):
             student_name(choice, 'e_talk', talk_theme=f'- Theme: {talk_e}')
         elif choice_e == 'd':
             print('\nEnter the Theme of the Demonstration')
-            print('------------------------------\n')
+            print('------------------------------------\n')
             demo_e = input('> ')
             student_name(choice, 'e_demonstration', demo_theme=f'- Theme: {demo_e}')
         else:
@@ -387,7 +376,6 @@ def student_part_type():
             part_info.append(p_type)
             student_part_theme(choice)
         
-    
 def student_part_number():
     clear_screen()
     pn = 'number'
@@ -405,36 +393,30 @@ def student_part_number():
     else:
         part_info.append(part_number)
         student_part_type()
-    
-    
-def main():
-    global c
-    c += 1
-    student_part_number()
-    part_info.clear()
-    part_i.clear()
-    hh_part_info.clear()
-    
+
 def intro():
+    c = 0
     while True:
+        c += 1
+        part_info.clear()
+        hh_part_info.clear()
         clear_screen()
         print("\nCopy & Paste Text Message to Students")
         print("-------------------------------------\n")
-        if c == 0:
+        if c == 1:
             print('Press [1] to make a text reminder')
-        elif c >= 1:
+        elif c >= 2:
             print('Press [1] to make another text reminder')
         print('Press [2] to quit\n')
         intro_choice = input('> ')
         if intro_choice == '1':
-            main()
+            student_part_number()
         elif intro_choice == '2':
             exit()
         else:
-            clear_screen()
-            print("That's not a valid option")
+            print("\nPlease choose a valid option...")
             time.sleep(3)
+            intro()
 
 
 intro()
-
