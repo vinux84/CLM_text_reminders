@@ -38,7 +38,6 @@ def clear_screen():
     else:
         _ = system("clear")
 
-
 def get_part_number(part_number):
     for n in part_number_list:
         if n == part_number:
